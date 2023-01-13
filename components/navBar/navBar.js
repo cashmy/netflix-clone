@@ -1,3 +1,12 @@
+/** Comments
+ * @author Cash Myers
+ * @github [https://github.com/cashmy]
+ * @create date 2023-01-13 13:32:35
+ * @modify date 2023-01-13 13:33:53
+ * @desc [NavBar - Component for the Netflix clone app]
+ */
+
+//#region //* Imports
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
@@ -5,6 +14,7 @@ import Image from 'next/image';
 import styles from './navBar.module.css';
 import ExpandMoreIcon from '../../public/static/expand_more.svg';
 import ExpandLessIcon from '../../public/static/expand_less.svg';
+//#endregion
 
 const NavBar = (props) => {
   //#region //* State variables, Props Destructing, etc.

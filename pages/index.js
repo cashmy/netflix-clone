@@ -1,12 +1,23 @@
+/** Comments
+ * @author Cash Myers
+ * @github [https://github.com/cashmy]
+ * @create date 2023-01-13 13:38:03
+ * @modify date 2023-01-13 14:25:26
+ * @desc [Home/Index - Component for the Netflix clone app]
+ */
+//#region //* Imports
 import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '../styles/Home.module.css'
 import Banner from '../components/banner/banner'
 import NavBar from '../components/navBar/navBar'
+import Card from '../components/card/card'
+//#endregion
 
 const inter = Inter({ subsets: ['latin'] })
 
+// * Main Component UI (Home Page)
 export default function Home() {
   return (
     <>
@@ -24,6 +35,11 @@ export default function Home() {
         />
 
       <main className={styles.main}>
+        <Card imgUrl="/static/clifford.webp" size="large" /> 
+        {/* <Card imgUrl="/static/clifford.webp" size="medium" />  */}
+        <Card imgUrl="" size="medium" /> 
+        <Card imgUrl="/static/clifford.webp" size="small" /> 
+      
         {/* 
         <Row title="NETFLIX ORIGINALS" fetchUrl={requests.fetchNetflixOriginals} isLargeRow />
         <Row title="Trending Now" fetchUrl={requests.fetchTrending} />
@@ -33,7 +49,7 @@ export default function Home() {
         <Row title="Horror Movies" fetchUrl={requests.fetchHorrorMovies} />
         <Row title="Romance Movies" fetchUrl={requests.fetchRomanceMovies} />
         <Row title="Documentaries" fetchUrl={requests.fetchDocumentaries} />
-        <Card /> */}
+      */}
       </main>
     </>
   )
