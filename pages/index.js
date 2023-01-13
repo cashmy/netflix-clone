@@ -2,7 +2,7 @@
  * @author Cash Myers
  * @github [https://github.com/cashmy]
  * @create date 2023-01-13 13:38:03
- * @modify date 2023-01-13 14:25:26
+ * @modify date 2023-01-13 16:33:40
  * @desc [Home/Index - Component for the Netflix clone app]
  */
 //#region //* Imports
@@ -12,7 +12,7 @@ import { Inter } from '@next/font/google'
 import styles from '../styles/Home.module.css'
 import Banner from '../components/banner/banner'
 import NavBar from '../components/navBar/navBar'
-import Card from '../components/card/card'
+import SectionCards from '../components/card/sectionCards'
 //#endregion
 
 const inter = Inter({ subsets: ['latin'] })
@@ -35,10 +35,9 @@ export default function Home() {
         />
 
       <main className={styles.main}>
-        <Card imgUrl="/static/clifford.webp" size="large" /> 
-        {/* <Card imgUrl="/static/clifford.webp" size="medium" />  */}
-        <Card imgUrl="" size="medium" /> 
-        <Card imgUrl="/static/clifford.webp" size="small" /> 
+        <SectionCards title="Disney" />
+        <SectionCards title="Trending Now" />
+        <SectionCards title="Top Rated" />
       
         {/* 
         <Row title="NETFLIX ORIGINALS" fetchUrl={requests.fetchNetflixOriginals} isLargeRow />
