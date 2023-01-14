@@ -2,7 +2,7 @@
  * @author Cash Myers
  * @github [https://github.com/cashmy]
  * @create date 2023-01-13 21:49:33
- * @modify date 2023-01-13 22:43:42
+ * @modify date 2023-01-13 23:44:40
  * @desc [Login Screen - nested route in NextJS]
  */
 //#region Imports
@@ -11,6 +11,7 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
+import { magic } from '../lib/magicClient'
 import styles from '../styles/Login.module.css'
 //#endregion
 
@@ -37,11 +38,27 @@ const Login = () => {
   const handleLoginWithEmail = async (e) => {
     e.preventDefault();
     if (email) {
-      if (email === 'cmyers880@gmail.com') {
-        router.push('/')
-      } else {
-        setUserMsg('Invalid email address')
-            }
+
+      try {
+        setIsLoading(true);
+        
+        const didToken = await magic.auth.loginWithMagicLink({ email })
+        if (didToken) {
+          // console.log({didToken})
+          setIsLoading(false);
+          router.push('/')
+
+        }
+      } catch (error) {
+        setIsLoading(false);
+        setUserMsg("Something went wrong logging in: ", error);
+      }
+
+      // if (email === 'cmyers880@gmail.com') {
+      //   router.push('/')
+      // } else {
+      //   setUserMsg('Invalid email address')
+      //       }
     } else {
       setUserMsg('Please enter your email address')
       return

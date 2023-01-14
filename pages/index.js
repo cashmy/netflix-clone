@@ -2,12 +2,11 @@
  * @author Cash Myers
  * @github [https://github.com/cashmy]
  * @create date 2023-01-13 13:38:03
- * @modify date 2023-01-13 20:45:22
+ * @modify date 2023-01-13 23:32:13
  * @desc [Home/Index - Component for the Netflix clone app]
  */
 //#region //* Imports
 import Head from 'next/head'
-import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '../styles/Home.module.css'
 import Banner from '../components/banner/banner'
