@@ -2,7 +2,7 @@
  * @author Cash Myers
  * @github [https://github.com/cashmy]
  * @create date 2023-01-13 13:38:03
- * @modify date 2023-01-13 16:33:40
+ * @modify date 2023-01-13 19:03:32
  * @desc [Home/Index - Component for the Netflix clone app]
  */
 //#region //* Imports
@@ -13,12 +13,14 @@ import styles from '../styles/Home.module.css'
 import Banner from '../components/banner/banner'
 import NavBar from '../components/navBar/navBar'
 import SectionCards from '../components/card/sectionCards'
+import { getVideos } from '../lib/videos'
 //#endregion
 
 const inter = Inter({ subsets: ['latin'] })
 
 // * Main Component UI (Home Page)
 export default function Home() {
+  const disneyVideos = getVideos();
   return (
     <>
       <Head>
@@ -27,18 +29,20 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-        <NavBar userName="cmyers880@gmail.com"/>
-        <Banner 
-          title="Clifford the Big Red Dog"
-          subtitle="A big red dog with a big heart."
-          imgUrl="/static/clifford.webp"
-        />
+      <NavBar userName="cmyers880@gmail.com" />
+      <Banner
+        title="Clifford the Big Red Dog"
+        subtitle="A big red dog with a big heart."
+        imgUrl="/static/clifford.webp"
+      />
 
       <main className={styles.main}>
-        <SectionCards title="Disney" />
-        <SectionCards title="Trending Now" />
-        <SectionCards title="Top Rated" />
-      
+        <div className={styles.sectionWrapper}>
+          <SectionCards title="Disney" videos={disneyVideos} size='large'/>
+        </div>
+        {/* <SectionCards title="Trending Now" videos={[0,1]} size='small'/>
+        <SectionCards title="Top Rated" videos={[0,1,2,3]} size='medium' /> */}
+
         {/* 
         <Row title="NETFLIX ORIGINALS" fetchUrl={requests.fetchNetflixOriginals} isLargeRow />
         <Row title="Trending Now" fetchUrl={requests.fetchTrending} />

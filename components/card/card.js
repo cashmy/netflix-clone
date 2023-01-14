@@ -2,7 +2,7 @@
  * @author Cash Myers
  * @github [https://github.com/cashmy]
  * @create date 2023-01-13 13:34:26
- * @modify date 2023-01-13 16:02:36
+ * @modify date 2023-01-13 18:33:56
  * @desc [Card - Component for the Netflix clone app]
  */
 
@@ -17,13 +17,18 @@ import cls from 'classnames';
 
 const Card = (props) => {
   //#region //* State variables, Props Destructing, etc.
-  const { imgUrl = "https://images.unsplash.com/photo-1594909122845-11baa439b7bf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80", size = "medium" } = props;
+  const { 
+    imgUrl = "https://images.unsplash.com/photo-1594909122845-11baa439b7bf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80", 
+    size = "medium",
+    id
+  } = props;
   const [imgSrc, setImgSrc] = useState(imgUrl);
   const classMap = {
     'large': styles.lgItem,
     'medium': styles.mdItem,
     'small': styles.smItem,
   }
+  const scale = id === 0 ? {scaleY: 1.1} : {scale: 1.1};
   //#endregion
 
   // * Main Component UI
@@ -33,7 +38,7 @@ const Card = (props) => {
     >
       <motion.div
         className={cls(styles.imgMotionWrapper, classMap[size])}
-        whileHover={{ scale: 1.2 }}
+        whileHover={{ ...scale }}
       >
         <Image
           src={imgSrc}
