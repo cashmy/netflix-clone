@@ -1,8 +1,8 @@
-/**
+/** Comments
  * @author Cash Myers
  * @github [https://github.com/cashmy]
  * @create date 2023-01-13 21:49:33
- * @modify date 2023-01-13 23:44:40
+ * @modify date 2023-01-14 10:01:01
  * @desc [Login Screen - nested route in NextJS]
  */
 //#region Imports
@@ -15,7 +15,6 @@ import { magic } from '../lib/magicClient'
 import styles from '../styles/Login.module.css'
 //#endregion
 
-
 const Login = () => {
   //#region // *State
   const [email, setEmail] = useState('')
@@ -25,7 +24,17 @@ const Login = () => {
   //#endregion
 
   //#region // *Effect
-  useEffect(() => { }, [])
+  useEffect(() => {
+    const handleComplete = () => setIsLoading(false)
+    
+    router.events.on('routeChangeComplete', handleComplete)
+    router.events.on('routeChangeError', handleComplete)
+    
+    return () => {
+      router.events.off('routeChangeComplete', handleComplete)
+      router.events.off('routeChangeError', handleComplete)
+    }
+   }, [router])
   //#endregion
 
   //#region // *Handler Functions
@@ -44,8 +53,7 @@ const Login = () => {
         
         const didToken = await magic.auth.loginWithMagicLink({ email })
         if (didToken) {
-          // console.log({didToken})
-          setIsLoading(false);
+          // setIsLoading(false);
           router.push('/')
 
         }
@@ -54,12 +62,8 @@ const Login = () => {
         setUserMsg("Something went wrong logging in: ", error);
       }
 
-      // if (email === 'cmyers880@gmail.com') {
-      //   router.push('/')
-      // } else {
-      //   setUserMsg('Invalid email address')
-      //       }
     } else {
+      setIsLoading(false);
       setUserMsg('Please enter your email address')
       return
     }
