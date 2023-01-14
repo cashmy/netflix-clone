@@ -2,7 +2,7 @@
  * @author Cash Myers
  * @github [https://github.com/cashmy]
  * @create date 2023-01-13 13:38:03
- * @modify date 2023-01-13 19:03:32
+ * @modify date 2023-01-13 20:45:22
  * @desc [Home/Index - Component for the Netflix clone app]
  */
 //#region //* Imports
@@ -18,9 +18,18 @@ import { getVideos } from '../lib/videos'
 
 const inter = Inter({ subsets: ['latin'] })
 
+
+export async function getServerSideProps() {
+  const disneyVideos = await getVideos('disney trailer');
+  const travelVideos = await getVideos('travel');
+  const productivityVideos = await getVideos('productivity');
+  const popularVideos = await getVideos('popular');
+  return { props: { disneyVideos, travelVideos, productivityVideos, popularVideos } }
+}
+
 // * Main Component UI (Home Page)
-export default function Home() {
-  const disneyVideos = getVideos();
+export default function Home({ disneyVideos, travelVideos, productivityVideos, popularVideos }) {
+  // console.log({disneyVideos})
   return (
     <>
       <Head>
@@ -38,21 +47,11 @@ export default function Home() {
 
       <main className={styles.main}>
         <div className={styles.sectionWrapper}>
-          <SectionCards title="Disney" videos={disneyVideos} size='large'/>
+          <SectionCards title="Disney" videos={disneyVideos} size='large' />
         </div>
-        {/* <SectionCards title="Trending Now" videos={[0,1]} size='small'/>
-        <SectionCards title="Top Rated" videos={[0,1,2,3]} size='medium' /> */}
-
-        {/* 
-        <Row title="NETFLIX ORIGINALS" fetchUrl={requests.fetchNetflixOriginals} isLargeRow />
-        <Row title="Trending Now" fetchUrl={requests.fetchTrending} />
-        <Row title="Top Rated" fetchUrl={requests.fetchTopRated} />
-        <Row title="Action Movies" fetchUrl={requests.fetchActionMovies} />
-        <Row title="Comedy Movies" fetchUrl={requests.fetchComedyMovies} />
-        <Row title="Horror Movies" fetchUrl={requests.fetchHorrorMovies} />
-        <Row title="Romance Movies" fetchUrl={requests.fetchRomanceMovies} />
-        <Row title="Documentaries" fetchUrl={requests.fetchDocumentaries} />
-      */}
+        <SectionCards title="Travel" videos={travelVideos} size='small'/>
+        <SectionCards title="Productivity" videos={productivityVideos} size='medium' />
+        <SectionCards title="Popular" videos={popularVideos} size='small' />
       </main>
     </>
   )
