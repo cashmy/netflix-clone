@@ -2,7 +2,7 @@
  * @author Cash Myers
  * @github [https://github.com/cashmy]
  * @create date 2023-01-13 13:32:35
- * @modify date 2023-01-14 10:15:45
+ * @modify date 2023-01-14 10:31:33
  * @desc [NavBar - Component for the Netflix clone app]
  */
 
@@ -34,6 +34,7 @@ const NavBar = () => {
         }
       } catch (error) {
         console.log('Error retrieving email.' , error);
+        // router.push("/login")
       }
     }
     getUserName();
@@ -52,6 +53,16 @@ const NavBar = () => {
   const handleDropDown = (event) => {
     event.preventDefault();
     setShowDropDown(!showDropDown);
+  }
+  const handleSignOut = async (event) => {
+    console.log("In handleSignOut")
+    event.preventDefault();
+    try {
+      await magic.user.logout();
+    } catch (error) {
+      console.error("Error logging out user.", error)
+    }
+    router.push('/login');
   }
   //#endregion
 
@@ -83,7 +94,11 @@ const NavBar = () => {
             {showDropDown &&
               <div className={styles.navDropdown}>
                 <div>
-                  <Link className={styles.linkName} href="/login">
+                  <Link 
+                    className={styles.linkName} 
+                    href="/login"
+                    onClick={handleSignOut}
+                  >
                     Sign out
                   </Link>
                   <div className={styles.lineWrapper}></div>
