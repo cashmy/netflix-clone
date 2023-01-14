@@ -2,25 +2,42 @@
  * @author Cash Myers
  * @github [https://github.com/cashmy]
  * @create date 2023-01-13 13:32:35
- * @modify date 2023-01-13 13:33:53
+ * @modify date 2023-01-14 10:15:45
  * @desc [NavBar - Component for the Netflix clone app]
  */
 
 //#region //* Imports
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './navBar.module.css';
 import ExpandMoreIcon from '../../public/static/expand_more.svg';
 import ExpandLessIcon from '../../public/static/expand_less.svg';
+import { magic } from '../../lib/magicClient';
 //#endregion
 
-const NavBar = (props) => {
+const NavBar = () => {
   //#region //* State variables, Props Destructing, etc.
-  const { userName } = props;
+  const [userName, setUserName] = useState('');
   const router = useRouter();
   const [showDropDown, setShowDropDown] = useState(false);
+  //#endregion
+  
+  //#region // *Effect
+  useEffect(() => {
+    async function getUserName() {
+      try {
+        const { email } = await magic.user.getMetadata();
+        if (email) {
+          setUserName(email);
+        }
+      } catch (error) {
+        console.log('Error retrieving email.' , error);
+      }
+    }
+    getUserName();
+  }, [])
   //#endregion
 
   //#region //* Handler functions
