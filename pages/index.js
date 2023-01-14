@@ -2,7 +2,7 @@
  * @author Cash Myers
  * @github [https://github.com/cashmy]
  * @create date 2023-01-13 13:38:03
- * @modify date 2023-01-14 10:13:20
+ * @modify date 2023-01-14 12:22:34
  * @desc [Home/Index - Component for the Netflix clone app]
  */
 //#region //* Imports
@@ -39,6 +39,7 @@ export default function Home({ disneyVideos, travelVideos, productivityVideos, p
       </Head>
       <NavBar />
       <Banner
+        videoId="4zH5iYM4wJo"
         title="Clifford the Big Red Dog"
         subtitle="A big red dog with a big heart."
         imgUrl="/static/clifford.webp"
