@@ -2,7 +2,7 @@
  * @author Cash Myers
  * @github [https://github.com/cashmy]
  * @create date 2023-01-13 13:32:35
- * @modify date 2023-01-14 10:31:33
+ * @modify date 2023-01-20 16:19:22
  * @desc [NavBar - Component for the Netflix clone app]
  */
 
@@ -55,7 +55,6 @@ const NavBar = () => {
     setShowDropDown(!showDropDown);
   }
   const handleSignOut = async (event) => {
-    console.log("In handleSignOut")
     event.preventDefault();
     try {
       await magic.user.logout();

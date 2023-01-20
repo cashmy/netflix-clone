@@ -2,7 +2,7 @@
  * @author Cash Myers
  * @github [https://github.com/cashmy]
  * @create date 2023-01-13 13:38:03
- * @modify date 2023-01-20 11:00:15
+ * @modify date 2023-01-20 14:59:29
  * @desc [Home/Index - Component for the Netflix clone app]
  */
 //#region //* Imports
@@ -28,7 +28,7 @@ export async function getServerSideProps() {
 
 // * Main Component UI (Home Page)
 export default function Home({ disneyVideos, travelVideos, productivityVideos, popularVideos }) {
-  // console.log({disneyVideos})
+  
   return (
     <>
       <Head>

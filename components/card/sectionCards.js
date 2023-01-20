@@ -2,7 +2,7 @@
  * @author Cash Myers
  * @github [https://github.com/cashmy]
  * @create date 2023-01-13 16:22:05
- * @modify date 2023-01-14 12:18:27
+ * @modify date 2023-01-20 16:18:31
  * @desc [SectionCards - Component for the Netflix clone app]
  */
 //#region //* Imports
@@ -20,7 +20,6 @@ const SectionCards = (props) => {
   //#region //* Event Handlers
   //#endregion
   
-  // console.log({videos})
 
   // * Main Component UI ()
   return (
