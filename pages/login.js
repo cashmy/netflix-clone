@@ -2,7 +2,7 @@
  * @author Cash Myers
  * @github [https://github.com/cashmy]
  * @create date 2023-01-13 21:49:33
- * @modify date 2023-01-14 10:01:01
+ * @modify date 2023-01-16 13:17:14
  * @desc [Login Screen - nested route in NextJS]
  */
 //#region Imports
@@ -45,7 +45,7 @@ const Login = () => {
   }
 
   const handleLoginWithEmail = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     if (email) {
 
       try {
