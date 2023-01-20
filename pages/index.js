@@ -2,7 +2,7 @@
  * @author Cash Myers
  * @github [https://github.com/cashmy]
  * @create date 2023-01-13 13:38:03
- * @modify date 2023-01-14 12:22:34
+ * @modify date 2023-01-20 11:00:15
  * @desc [Home/Index - Component for the Netflix clone app]
  */
 //#region //* Imports
@@ -12,7 +12,7 @@ import styles from '../styles/Home.module.css'
 import Banner from '../components/banner/banner'
 import NavBar from '../components/navBar/navBar'
 import SectionCards from '../components/card/sectionCards'
-import { getVideos } from '../lib/videos'
+import { getVideos, getPopularVideos } from '../lib/videos'
 //#endregion
 
 const inter = Inter({ subsets: ['latin'] })
@@ -22,7 +22,7 @@ export async function getServerSideProps() {
   const disneyVideos = await getVideos('disney trailer');
   const travelVideos = await getVideos('travel');
   const productivityVideos = await getVideos('productivity');
-  const popularVideos = await getVideos('popular');
+  const popularVideos = await getPopularVideos();
   return { props: { disneyVideos, travelVideos, productivityVideos, popularVideos } }
 }
 
